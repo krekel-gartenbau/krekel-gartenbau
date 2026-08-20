@@ -274,16 +274,23 @@
           <div class="contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>Adresse</strong><br>Wiehbachtal 60<br>51381 Leverkusen</div></div>
         </div>
       </div>
-      <form class="form" id="contactForm">
+      <form class="form" id="contactForm" action="https://formsubmit.co/info@allaroundkrekel.de" method="POST">
         <span class="eyebrow">Unverbindliche Anfrage</span>
         <h2 style="font-size:2.2rem">Projekt kurz beschreiben</h2>
+        <input type="hidden" name="_subject" value="Neue Anfrage über krekel-gartenbau.de" />
+        <input type="hidden" name="_next" value="https://krekel-gartenbau.de/danke.html" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_url" value="https://krekel-gartenbau.de/#kontakt" />
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true" />
         <div class="form-grid">
-          <label>Name<input required id="name" type="text" placeholder="Ihr Name" /></label>
-          <label>Telefon<input id="phone" type="tel" placeholder="Ihre Telefonnummer" /></label>
-          <label class="full">E-Mail<input required id="email" type="email" placeholder="Ihre E-Mail-Adresse" /></label>
-          <label class="full">Gewünschte Leistung<select id="service"><option>Gartenpflege</option><option>Rasenpflege</option><option>Hecken- / Sträucherschnitt</option><option>Pflanzarbeiten</option><option>Terrassenbau</option><option>Pflasterarbeiten</option><option>Einfahrt pflastern</option><option>Gartengestaltung</option><option>Sonstiges</option></select></label>
-          <label class="full">Nachricht<textarea required id="message" placeholder="Was soll gemacht werden? Gerne mit grober Größe, Ort und vorhandenen Fotos."></textarea></label>
-          <div class="full"><button class="btn btn-primary" type="submit">Anfrage per E-Mail senden</button><div class="form-note">Beim Absenden öffnet sich Ihr E-Mail-Programm mit der ausgefüllten Anfrage. Es werden keine Daten auf dieser Website gespeichert.</div></div>
+          <label>Name<input required name="Name" type="text" placeholder="Ihr Name" /></label>
+          <label>Telefon<input name="Telefon" type="tel" placeholder="Ihre Telefonnummer" /></label>
+          <label class="full">E-Mail<input required name="email" type="email" placeholder="Ihre E-Mail-Adresse" /></label>
+          <label class="full">Gewünschte Leistung<select name="Leistung"><option>Gartenpflege</option><option>Rasenpflege</option><option>Hecken- / Sträucherschnitt</option><option>Pflanzarbeiten</option><option>Terrassenbau</option><option>Pflasterarbeiten</option><option>Einfahrt pflastern</option><option>Gartengestaltung</option><option>Sonstiges</option></select></label>
+          <label class="full">Nachricht<textarea required name="Nachricht" placeholder="Was soll gemacht werden? Gerne mit grober Größe, Ort und vorhandenen Fotos."></textarea></label>
+          <label class="full" style="display:flex;grid-template-columns:auto 1fr;align-items:flex-start;gap:10px;font-weight:500"><input required name="Datenschutz zur Kenntnis genommen" value="Ja" type="checkbox" style="width:18px;height:18px;margin-top:4px" /><span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener" style="text-decoration:underline;color:var(--green-2)">Datenschutzerklärung</a> zur Kenntnis genommen.</span></label>
+          <div class="full"><button class="btn btn-primary" type="submit">Anfrage senden</button><div class="form-note">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Nach dem Absenden erhalten Sie eine Bestätigung auf der Website.</div></div>
         </div>
       </form>
     </div>
@@ -304,17 +311,6 @@
   const navLinks=document.getElementById('navLinks');
   menuBtn.addEventListener('click',()=>navLinks.classList.toggle('open'));
   navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-  document.getElementById('contactForm').addEventListener('submit',function(e){
-    e.preventDefault();
-    const name=document.getElementById('name').value.trim();
-    const phone=document.getElementById('phone').value.trim();
-    const email=document.getElementById('email').value.trim();
-    const service=document.getElementById('service').value;
-    const message=document.getElementById('message').value.trim();
-    const subject=encodeURIComponent('Garten-Anfrage – '+service+' – '+name);
-    const body=encodeURIComponent('Name: '+name+'\nTelefon: '+phone+'\nE-Mail: '+email+'\nLeistung: '+service+'\n\nNachricht:\n'+message);
-    window.location.href='mailto:info@allaroundkrekel.de?subject='+subject+'&body='+body;
-  });
 </script>
 
 
